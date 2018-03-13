@@ -9,5 +9,38 @@
 </head>
 <body>
 <h1>This page will have a table of projects</h1>
+<h1>Membership</h1>
+<table style="width:100%">
+    <tr>
+        <th>projectID</th>
+        <th>title</th>
+        <th>description</th>
+        <th>client Company</th>
+        <th>Client Location</th>
+        <th>Client SIte</th>
+        <th>Status</th>
+        <th>Trello</th>
+        <th>Project URL</th>
+        <th>Project Login</th>
+        <th>Project Password</th>
+    </tr>
+
+    <repeat group="{{ @projectss }}" value="{{ @project }}">
+        <tr>
+            <td>{{ @project['projectID'] }}</td>
+            <td>{{ @project['title'] }}</td>
+            <td>{{ @project['description'] }}</td>
+            <td>{{ @project['clientCompany'] }}</td>
+            <td>{{ @project['clientLocation'] }}</td>
+            <td>{{ @project['clientSite'] }}</td>
+            <td>{{ @project['status'] }}</td>
+            <td>{{ @project['trello'] }}</td>
+            <td>{{ @project['projectURL'] }}</td>
+            <td>{{ @project['projectLogin'] }}</td>
+            <td>{{ @project['projectPass'] }}</td>
+        </tr>
+    </repeat>
+
+</table>
 </body>
 </html>
