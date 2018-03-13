@@ -25,6 +25,7 @@ $gitLink="";
 $name="";
 $email="";
 $phone="";
+$status="";
 
 //check if the form has been submitted
 if(!empty($_POST)) {
@@ -73,12 +74,25 @@ if(!empty($_POST)) {
         $email=$_POST['email'];
     }
 
-    $sql="INSERT INTO 
-      VALUES";
-//prepare statement
-    $statement = $dbh->prepare($sql);
-//Bind parameters
-    $statement->bindParam('projectName',$projectName, PDO::PARAM_STR);
 
 
 }
+
+$sql="INSERT INTO projects(title,description, clientCompany, clientLocation, clientSite,status,trello,projectURL)
+      VALUES(:title,:description, :clientCompany, :clientLocation, :clientSite,:status,:trello,:projectURL)";
+//prepare statement
+$statement = $dbh->prepare($sql);
+//Bind parameters
+$statement->bindParam(':title',$projectName, PDO::PARAM_STR);
+$statement->bindParam(':description',$projectDescription, PDO::PARAM_STR);
+$statement->bindParam(':clientCompany',$companyName, PDO::PARAM_STR);
+$statement->bindParam(':clientLocation',$companyLocation, PDO::PARAM_STR);
+$statement->bindParam(':clientSite',$companyURL, PDO::PARAM_STR);
+$statement->bindParam(':status',$status, PDO::PARAM_STR);
+$statement->bindParam(':trello',$trelloLink, PDO::PARAM_STR);
+$statement->bindParam(':projectURL',$siteURL, PDO::PARAM_STR);
+$statement->execute();
+
+$f3->set('DEBUG',3);
+$f3->reroute('home.html');
+
