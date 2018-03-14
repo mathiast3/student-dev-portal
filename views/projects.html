@@ -9,7 +9,6 @@
 </head>
 <body>
 <h1>This page will have a table of projects</h1>
-<h1>Membership</h1>
 <table style="width:100%">
     <tr>
         <th>projectID</th>
@@ -25,7 +24,7 @@
         <th>Project Password</th>
     </tr>
 
-    <repeat group="{{ @projectss }}" value="{{ @project }}">
+    <repeat group="{{ @projects }}" value="{{ @project }}">
         <tr>
             <td>{{ @project['projectID'] }}</td>
             <td>{{ @project['title'] }}</td>

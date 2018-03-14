@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clients</title>
+</head>
+<body>
+<h1>This page will have a table of clients</h1>
+<table style="width:100%">
+    <tr>
+        <th>client ID</th>
+        <th>Client Name</th>
+        <th>Client Email</th>
+        <th>Client Phone</th>
+        <th>Project ID</th>
+
+
+    </tr>
+
+    <repeat group="{{ @clients }}" value="{{ @client }}">
+        <tr>
+            <td>{{ @client['clientID'] }}</td>
+            <td>{{ @client['clientName'] }}</td>
+            <td>{{ @client['clientEmail'] }}</td>
+            <td>{{ @client['clientPhone'] }}</td>
+            <td>{{ @client['projectID'] }}</td>
+        </tr>
+    </repeat>
+
+</table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Developers</title>
+</head>
+<body>
+<h1>This page will have a table of developers</h1>
+<table style="width:100%">
+    <tr>
+        <th>class ID</th>
+        <th>Class Name</th>
+        <th>Instructor</th>
+        <th>Quarter</th>
+        <th>Instructor notes</th>
+        <th>project ID</th>
+
+
+    </tr>
+
+    <repeat group="{{ @developers }}" value="{{ @developer }}">
+        <tr>
+            <td>{{ @developer['classID'] }}</td>
+            <td>{{ @developer['className'] }}</td>
+            <td>{{ @developer['instructor'] }}</td>
+            <td>{{ @developer['quarter'] }}</td>
+            <td>{{ @developer['instructorNotes'] }}</td>
+            <td>{{ @developer['projectID'] }}</td>
+        </tr>
+    </repeat>
+
+</table>
+</body>
+</html>
