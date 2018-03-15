@@ -55,7 +55,7 @@ function getProjects()
     global $dbh;
 
     //1. Define the query
-    $sql = "SELECT * FROM members ORDER BY last, first";
+    $sql = "SELECT * FROM projects ORDER BY last, first";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
@@ -92,6 +92,50 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
     $statement->bindParam(':projectURL', $projectURL, PDO::PARAM_STR);
     $statement->bindParam(':projectLogin', $projectLogin, PDO::PARAM_STR);
     $statement->bindParam(':projectPass', $projectPass, PDO::PARAM_STR);
+    //4. Execute the query
+    $result = $statement->execute();
+
+    //5. Return the result
+    return $result;
+}
+
+function getClientss()
+{
+    global $dbh;
+
+    //1. Define the query
+    $sql = "SELECT * FROM clients ORDER BY last, first";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+
+    //3. Bind parameters
+
+    //4. Execute the query
+    $statement->execute();
+
+    //5. Get the results
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //print_r($result);
+    return $result;
+}
+
+function insertClients($clientName, $clientEmail, $clientPhone, $projectID)
+{
+    global $dbh;
+
+    //1. Define the query
+    $sql = "INSERT INTO clients VALUES (:clientName, :clientEmail, :clientPhone, :projectID)";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+
+    //3. Bind parameters
+    $statement->bindParam(':clientName', $clientName, PDO::PARAM_STR);
+    $statement->bindParam(':clientEmail', $clientEmail, PDO::PARAM_STR);
+    $statement->bindParam(':clientPhone', $clientPhone, PDO::PARAM_STR);
+    $statement->bindParam(':projectID', $projectID, PDO::PARAM_STR);
+
     //4. Execute the query
     $result = $statement->execute();
 
