@@ -6,10 +6,11 @@
  * Time: 2:56 PM
  */
 
-require_once ('vendor/autoload.php');
-
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
+
+require_once ('vendor/autoload.php');
+
 
 $f3 = Base::instance();
 
@@ -20,3 +21,7 @@ $f3->route('GET /', function() {
     $view = new View;
     echo $view->render('views/home.html');
 });
+
+
+
+$f3->run();
