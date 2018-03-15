@@ -35,6 +35,14 @@ create table developers (
     );
  */
 
+/*
+ * Author: Ashton Knox
+ * Date: 3/14/2018
+ * Database functions
+ */
+/**
+ * create a connection object
+ */
 function connect()
 {
     try {
@@ -50,6 +58,9 @@ function connect()
     }
 }
 
+/**
+ * @return array associative array of all projects and their fields
+ */
 function getProjects()
 {
     global $dbh;
@@ -71,6 +82,19 @@ function getProjects()
     return $result;
 }
 
+/**
+ * @param $title
+ * @param $description
+ * @param $clientCompany
+ * @param $clientLocation
+ * @param $clientSite
+ * @param $status
+ * @param $trello
+ * @param $projectURL
+ * @param $projectLogin
+ * @param $projectPass
+ * @return bool true if successfully addec
+ */
 function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $projectURL, $projectLogin, $projectPass)
 {
     global $dbh;
@@ -99,6 +123,9 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
     return $result;
 }
 
+/**
+ * @return array all clients and their fields
+ */
 function getClients()
 {
     global $dbh;
@@ -120,6 +147,13 @@ function getClients()
     return $result;
 }
 
+/**
+ * @param $clientName
+ * @param $clientEmail
+ * @param $clientPhone
+ * @param $projectID
+ * @return bool true if add succeeds
+ */
 function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
 {
     global $dbh;
@@ -143,6 +177,9 @@ function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
     return $result;
 }
 
+/**
+ * @return array all developers and their fields
+ */
 function getDevelopers()
 {
     global $dbh;
@@ -164,6 +201,14 @@ function getDevelopers()
     return $result;
 }
 
+/**
+ * @param $className
+ * @param $instructor
+ * @param $quarter
+ * @param $instructorNotes
+ * @param $projectID
+ * @return bool true if the add succeeds
+ */
 function insertDevelopers($className, $instructor, $quarter, $instructorNotes, $projectID)
 {
     global $dbh;
