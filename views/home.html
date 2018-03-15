@@ -10,58 +10,66 @@
 <div class="container">
     <h1>Welcome to the Student Development Portal!</h1>
     <form action="models/submission.php" method="post">
-        <label for="projectName">Project Name:</label>
-        <input type="text" id="projectName" name="projectName">
+        <div class="form-group form-control">
+            <label for="projectName">Project Name:</label>
+            <input class="form-control-element" type="text" id="projectName" name="projectName">
 
-        <label for="projectDescription">Project Description:</label>
-        <input type="text" name="projectDescription" id="projectDescription">
+            <label for="projectDescription">Project Description:</label>
+            <input type="text" name="projectDescription" id="projectDescription"><br>
 
-        <label for="companyName">Company Name:</label>
-        <input type="text" name="companyName" id="companyName">
+            <label for="companyName">Company Name:</label>
+            <input type="text" name="companyName" id="companyName">
 
-        <label for="companyLocation">Company Location:</label>
-        <input type="text" name="companyLocation" id="companyLocation">
+            <label for="companyLocation">Company Location:</label>
+            <input type="text" name="companyLocation" id="companyLocation">
 
-        <label for="companyURL">Company URL:</label>
-        <input type="text" name="companyURL" id="companyURL">
+            <label for="companyURL">Company URL:</label>
+            <input type="text" name="companyURL" id="companyURL">
+        </div>
 
-        <h2>Project Info</h2>
-        <label for="siteURL">Site URL:</label>
-        <input type="text" name="siteURL" id="siteURL">
+        <div class="form-group form-control">
+            <h2>Project Info</h2>
+            <label for="siteURL">Site URL:</label>
+            <input type="text" name="siteURL" id="siteURL">
 
-        <label for="trelloLink">Trello Lisnk:</label>
-        <input type="text" name="trelloLink" id="trelloLink">
+            <label for="trelloLink">Trello Link:</label>
+            <input type="text" name="trelloLink" id="trelloLink">
 
-        <label for="gitLink">Github Link:</label>
-        <input type="text" name="gitLink" id="gitLink">
+            <label for="gitLink">Github Link:</label>
+            <input type="text" name="gitLink" id="gitLink">
+        </div>
 
-        <h2>Contact Info</h2>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name">
+        <div class="form-group form-control">
+            <h2>Contact Info</h2>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
 
-        <label for="email">Email:</label>
-        <input type="text" name="email" id="email">
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email">
 
-        <label for="phone">Phone:</label>
-        <input type="text" name="phone" id="phone">
+            <label for="phone">Phone:</label>
+            <input type="text" name="phone" id="phone">
+        </div>
+        <div class="form-group form-control">
+            <h2>Class Info</h2>
+            <label for="className">Class:</label>
+            <input type="text" name="className" id="className">
 
-        <h2>Class Info</h2>
-        <label for="className">Class:</label>
-        <input type="text" name="className" id="className">
+            <label for="instructor">Instructor:</label>
+            <input type="text" name="instructor" id="instructor">
 
-        <label for="instructor">Instructor:</label>
-        <input type="text" name="instructor" id="instructor">
+            <label for="quarter">Quarter:</label>
+            <select name="quarter" id="quarter">
+                <option value="fall">Fall</option>
+                <option value="winter">Winter</option>
+                <option value="spring">Spring</option>
+                <option value="summer">Summer</option>
+            </select>
 
-        <label for="quarter">Quarter:</label>
-        <select name="quarter" id="quarter">
-            <option value="fall">Fall</option>
-            <option value="winter">Winter</option>
-            <option value="spring">Spring</option>
-            <option value="summer">Summer</option>
-        </select>
 
-        <label for="notes">Instructor Notes</label>
-        <textarea name="notes" id="notes"></textarea>
+            <label for="notes">Instructor Notes</label>
+            <textarea name="notes" id="notes"></textarea>
+        </div>
 
         <br><button type="submit">Submit Project</button>
 
