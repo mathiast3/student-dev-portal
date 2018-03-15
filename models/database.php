@@ -34,3 +34,67 @@ create table developers (
     FOREIGN KEY(projectID) REFERENCES projects(projectID)
     );
  */
+
+function connect()
+{
+    try {
+        //Instantiate a database object
+        $dbh = new PDO(DB_DSN, DB_USERNAME,
+            DB_PASSWORD );
+        //echo "Connected to database!!!";
+        return $dbh;
+    }
+    catch (PDOException $e) {
+        echo $e->getMessage();
+        return;
+    }
+}
+
+function getProjects()
+{
+    global $dbh;
+
+    //1. Define the query
+    $sql = "SELECT * FROM members ORDER BY last, first";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+
+    //3. Bind parameters
+
+    //4. Execute the query
+    $statement->execute();
+
+    //5. Get the results
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //print_r($result);
+    return $result;
+}
+
+function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $projectURL, $projectLogin, $projectPass)
+{
+    global $dbh;
+
+    //1. Define the query
+    $sql = "INSERT INTO projects VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+
+    //3. Bind parameters
+    $statement->bindParam(':title', $title, PDO::PARAM_STR);
+    $statement->bindParam(':decription', $description, PDO::PARAM_STR);
+    $statement->bindParam(':clientCompany', $clientCompany, PDO::PARAM_STR);
+    $statement->bindParam(':clientLocation', $clientLocation, PDO::PARAM_STR);
+    $statement->bindParam(':clientSite', $clientSite, PDO::PARAM_STR);
+    $statement->bindParam(':status', $status, PDO::PARAM_STR);
+    $statement->bindParam(':trello', $trello, PDO::PARAM_STR);
+    $statement->bindParam(':projectURL', $projectURL, PDO::PARAM_STR);
+    $statement->bindParam(':projectLogin', $projectLogin, PDO::PARAM_STR);
+    $statement->bindParam(':projectPass', $projectPass, PDO::PARAM_STR);
+    //4. Execute the query
+    $result = $statement->execute();
+
+    //5. Return the result
+    return $result;
+}
