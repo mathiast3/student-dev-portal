@@ -7,27 +7,65 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
-<h1>Welcome to the Student Development Portal!</h1>
-<form action="models/submission.php" method="post">
-    Project Name:<input type="text" name="projectName">
-    Project Description:<input type="text" name="projectDescription">
-    Company Name:<input type="text" name="companyName">
-    Company Location:<input type="text" name="companyLocation">
-    Company URL:<input type="text" name="companyURL">
+<div class="container">
+    <h1>Welcome to the Student Development Portal!</h1>
+    <form action="models/submission.php" method="post">
+        <label for="projectName">Project Name:</label>
+        <input type="text" id="projectName" name="projectName">
 
-    <h2>Project Info</h2>
-    Site URL:<input type="text" name="siteURL">
-    Trello Link:<input type="text" name="trelloLink">
-    Github Link:<input type="text" name="gitLink">
+        <label for="projectDescription">Project Description:</label>
+        <input type="text" name="projectDescription" id="projectDescription">
 
-    <h2>Contact Info</h2>
-    Name:<input type="text" name="name">
-    Email:<input type="text" name="email">
-    Phone:<input type="text" name="phone">
+        <label for="companyName">Company Name:</label>
+        <input type="text" name="companyName" id="companyName">
 
-    <br><button type="submit">Submit Project</button>
+        <label for="companyLocation">Company Location:</label>
+        <input type="text" name="companyLocation" id="companyLocation">
 
-</form>
+        <label for="companyURL">Company URL:</label>
+        <input type="text" name="companyURL" id="companyURL">
 
+        <h2>Project Info</h2>
+        <label for="siteURL">Site URL:</label>
+        <input type="text" name="siteURL" id="siteURL">
+
+        <label for="trelloLink">Trello Lisnk:</label>
+        <input type="text" name="trelloLink" id="trelloLink">
+
+        <label for="gitLink">Github Link:</label>
+        <input type="text" name="gitLink" id="gitLink">
+
+        <h2>Contact Info</h2>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email">
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" id="phone">
+
+        <h2>Class Info</h2>
+        <label for="className">Class:</label>
+        <input type="text" name="className" id="className">
+
+        <label for="instructor">Instructor:</label>
+        <input type="text" name="instructor" id="instructor">
+
+        <label for="quarter">Quarter:</label>
+        <select name="quarter" id="quarter">
+            <option value="fall">Fall</option>
+            <option value="winter">Winter</option>
+            <option value="spring">Spring</option>
+            <option value="summer">Summer</option>
+        </select>
+
+        <label for="notes">Instructor Notes</label>
+        <textarea name="notes" id="notes"></textarea>
+
+        <br><button type="submit">Submit Project</button>
+
+    </form>
+</div>
 </body>
 </html>

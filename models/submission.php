@@ -12,54 +12,42 @@ require "/home/mtaylorg/public_html/328/student-dev-portal/models/db-connect.php
 //connect to database
 $dbh=connect();
 
-$projectName="";
-$projectDescription="";
-$companyName="";
-$companyLocation="";
-$companyURL="";
-
-$siteURL="";
-$trelloLink="";
-$gitLink="";
-
-$name="";
-$email="";
-$phone="";
-$status="";
+//create a new Project and Client objects to hold the data
+$project = new Project();
 
 //check if the form has been submitted
 if(!empty($_POST)) {
 
     if(isset($_POST['projectName'])){
-        $projectName=$_POST['projectName'];
+        $project.setProjectName($_POST['projectName']);
     }
 
     if(isset($_POST['projectDescription'])){
-        $projectDescription=$_POST['projectDescription'];
+        $project.setProjectDescription($_POST['projectDescription']);
     }
 
     if(isset($_POST['companyName'])){
-        $companyName=$_POST['companyName'];
+        $project.setCompanyName($_POST['companyName']);
     }
 
     if(isset($_POST[['companyLocation']])){
-        $companyLocation=$_POST['companyLocation'];
+        $project.setCompanyLocation($_POST['companyLocation']);
     }
 
     if(isset($_POST[['companyURL']])){
-        $companyURL=$_POST['companyURL'];
+        $project.setCompanyURL($_POST['companyURL']);
     }
 
     if(isset($_POST[['siteURL']])){
-        $siteURL=$_POST['siteURL'];
+        $project.setSiteURL($_POST['siteURL']);
     }
 
     if(isset($_POST[['trelloLink']])){
-        $trelloLink=$_POST['trelloLink'];
+        $project.setTrelloLink($_POST['trelloLink']);
     }
 
     if(isset($_POST[['gitLink']])){
-        $gitLink=$_POST['gitLink'];
+        $project.setGitLink($_POST['gitLink']);
     }
 
     if(isset($_POST[['name']])){
