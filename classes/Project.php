@@ -6,7 +6,7 @@
  * Time: 2:03 PM
  */
 
-class Project
+class project
 {
     private $projectName;
     private $projectDescription;
