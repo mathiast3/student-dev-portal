@@ -101,7 +101,7 @@ function getProjects()
  */
 function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $projectURL, $projectLogin, $projectPass)
 {
-    //global $dbh;
+
     $dbh=connect();
 
     //1. Define the query
@@ -132,7 +132,7 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
  */
 function getClients()
 {
-    global $dbh;
+
     $dbh=connect();
 
     //1. Define the query
@@ -161,11 +161,11 @@ function getClients()
  */
 function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
 {
-    global $dbh;
+
     $dbh=connect();
 
     //1. Define the query
-    $sql = "INSERT INTO clients VALUES (:clientName, :clientEmail, :clientPhone, :projectID)";
+    $sql = "INSERT INTO clients(clientName, clientEmail, clientPhone, projectID) VALUES (:clientName, :clientEmail, :clientPhone, :projectID)";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
@@ -177,10 +177,8 @@ function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
     $statement->bindParam(':projectID', $projectID, PDO::PARAM_STR);
 
     //4. Execute the query
-    $result = $statement->execute();
+    $statement->execute();
 
-    //5. Return the result
-    return $result;
 }
 
 /**
@@ -222,7 +220,7 @@ function insertDevelopers($className, $instructor, $quarter, $instructorNotes, $
     $dbh=connect();
 
     //1. Define the query
-    $sql = "INSERT INTO developers VALUES (:className, :instructor, :quarter, :instructorNotes, :projectID)";
+    $sql = "INSERT INTO developers(className, instructor, quarter, instructorNotes, projectID) VALUES (:className, :instructor, :quarter, :instructorNotes, :projectID)";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
