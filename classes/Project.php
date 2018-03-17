@@ -6,7 +6,7 @@
  * Time: 2:03 PM
  */
 
-class project
+class Project
 {
     private $projectName;
     private $projectDescription;
@@ -16,6 +16,48 @@ class project
     private $siteURL;
     private $trelloLink;
     private $gitLink;
+    private $username;
+
+    /**
+     * project constructor.
+     */
+    public function __construct()
+    {
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
+    private $password;
     private $status;
 
     /**
@@ -163,36 +205,7 @@ class project
     }
 
 
-    /**
-     * Project constructor.
-     * @param string $projectName
-     * @param string $projectDescription
-     * @param string $companyName
-     * @param string $companyLocation
-     * @param string $companyURL
-     * @param string $siteURL
-     * @param string $trelloLink
-     * @param string $gitLink
-     * @param string $name
-     * @param string $email
-     * @param string $phone
-     * @param string $status
-     */
-    public function __construct($projectName, $projectDescription, $companyName, $companyLocation, $companyURL, $siteURL, $trelloLink, $gitLink, $name, $email, $phone, $status)
-    {
-        $this->projectName = $projectName;
-        $this->projectDescription = $projectDescription;
-        $this->companyName = $companyName;
-        $this->companyLocation = $companyLocation;
-        $this->companyURL = $companyURL;
-        $this->siteURL = $siteURL;
-        $this->trelloLink = $trelloLink;
-        $this->gitLink = $gitLink;
-        $this->name = $name;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->status = $status;
-    }
+
 
 
 }

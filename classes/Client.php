@@ -13,17 +13,54 @@ class Client
     private $_phone;
 
     /**
-     * Client constructor.
-     * @param string $name
-     * @param string $email
-     * @param string $phone
+     * @return mixed
      */
-    public function __construct($name, $email, $phone)
+    public function getName()
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->phone = $phone;
+        return $this->_name;
     }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->_name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->_email;
+    }
+
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email)
+    {
+        $this->_email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->_phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone)
+    {
+        $this->_phone = $phone;
+    }
+
+
 
 
 }

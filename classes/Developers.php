@@ -6,27 +6,12 @@
  * Time: 1:47 PM
  */
 
-class developers extends Client
+class Developers extends Client
 {
         private $_instructor;
         private $_quarter;
         private $_notes;
 
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
 
     /**
      * @return mixed

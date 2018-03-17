@@ -40,6 +40,9 @@ create table developers (
  * Date: 3/14/2018
  * Database functions
  */
+
+require "/home/mtaylorg/config.php";
+
 /**
  * create a connection object
  */
@@ -64,6 +67,7 @@ function connect()
 function getProjects()
 {
     global $dbh;
+    $dbh=connect();
 
     //1. Define the query
     $sql = "SELECT * FROM projects ORDER BY last, first";
@@ -97,17 +101,18 @@ function getProjects()
  */
 function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $projectURL, $projectLogin, $projectPass)
 {
-    global $dbh;
+    //global $dbh;
+    $dbh=connect();
 
     //1. Define the query
-    $sql = "INSERT INTO projects VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
+    $sql = "INSERT INTO projects(title, description, clientCompany, clientLocation, clientSite, status, trello, projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
 
     //3. Bind parameters
     $statement->bindParam(':title', $title, PDO::PARAM_STR);
-    $statement->bindParam(':decription', $description, PDO::PARAM_STR);
+    $statement->bindParam(':description', $description, PDO::PARAM_STR);
     $statement->bindParam(':clientCompany', $clientCompany, PDO::PARAM_STR);
     $statement->bindParam(':clientLocation', $clientLocation, PDO::PARAM_STR);
     $statement->bindParam(':clientSite', $clientSite, PDO::PARAM_STR);
@@ -117,10 +122,9 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
     $statement->bindParam(':projectLogin', $projectLogin, PDO::PARAM_STR);
     $statement->bindParam(':projectPass', $projectPass, PDO::PARAM_STR);
     //4. Execute the query
-    $result = $statement->execute();
+    $statement->execute();
 
-    //5. Return the result
-    return $result;
+
 }
 
 /**
@@ -129,6 +133,7 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
 function getClients()
 {
     global $dbh;
+    $dbh=connect();
 
     //1. Define the query
     $sql = "SELECT * FROM clients ORDER BY last, first";
@@ -157,6 +162,7 @@ function getClients()
 function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
 {
     global $dbh;
+    $dbh=connect();
 
     //1. Define the query
     $sql = "INSERT INTO clients VALUES (:clientName, :clientEmail, :clientPhone, :projectID)";
@@ -183,6 +189,7 @@ function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
 function getDevelopers()
 {
     global $dbh;
+    $dbh=connect();
 
     //1. Define the query
     $sql = "SELECT * FROM developers ORDER BY last, first";
@@ -212,6 +219,7 @@ function getDevelopers()
 function insertDevelopers($className, $instructor, $quarter, $instructorNotes, $projectID)
 {
     global $dbh;
+    $dbh=connect();
 
     //1. Define the query
     $sql = "INSERT INTO developers VALUES (:className, :instructor, :quarter, :instructorNotes, :projectID)";
