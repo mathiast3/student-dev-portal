@@ -86,6 +86,29 @@ function getProjects()
     return $result;
 }
 
+function getProjectID($projectName)
+{
+    $dbh=connect();
+
+    //1. Define the query
+    $sql = "SELECT projectID FROM projects WHERE title=:title";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+
+    //3. bind params
+    $statement->bindParam(':title',$projectName, PDO::PARAM_INT);
+
+    //4. Execute the query
+    $statement->execute();
+
+    //5. Get the results
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
+    //print_r($result);
+
+    return $result['projectID'];
+}
+
 /**
  * @param $title
  * @param $description
@@ -174,7 +197,7 @@ function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
     $statement->bindParam(':clientName', $clientName, PDO::PARAM_STR);
     $statement->bindParam(':clientEmail', $clientEmail, PDO::PARAM_STR);
     $statement->bindParam(':clientPhone', $clientPhone, PDO::PARAM_STR);
-    $statement->bindParam(':projectID', $projectID, PDO::PARAM_STR);
+    $statement->bindParam(':projectID', $projectID, PDO::PARAM_INT);
 
     //4. Execute the query
     $statement->execute();

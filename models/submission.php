@@ -105,6 +105,12 @@ if(!empty($_POST)) {
 //insert to projects table
 insertProject($project->getProjectName(),$project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(),$project->getStatus(), $project->getTrelloLink(),$project->getSiteURL(),$project->getUsername(), $project->getPassword());
 
+//get the projectID to use as a foreign key
+$projectID=getProjectID($project->getProjectName());
+
+//insert into the client and dev table
+insertClient($client->getName(),$client->getEmail(),$client->getPhone(),$projectID);
+insertDevelopers($developer->getName(),$developer->getInstructor(),$developer->getQuarter(),$developer->getInstructor(),$projectID);
 
 
 
