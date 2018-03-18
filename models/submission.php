@@ -31,13 +31,15 @@ $isValid = true;
 //check if the form has been submitted
 if(!empty($_POST)) {
 
-    if(isset($_POST['projectName']) && validProjectName($_POST['projectName'])){
+
+    if(isset($_POST['projectName'])){
         $project->setProjectName($_POST['projectName']);
 
     } else{
         //invailid name
         $isValid=false;
     }
+
 
     if(isset($_POST['projectDescription'])){
         $project->setProjectDescription($_POST['projectDescription']);
@@ -58,10 +60,8 @@ if(!empty($_POST)) {
 
     if(isset($_POST['companyURL']) && validURL($_POST['companyURL'])){
         $project->setCompanyURL($_POST['companyURL']);
-    } else{
-
-        $isValid=false;
     }
+
 
     if(isset($_POST['username'])){
         $project->setUsername($_POST['username']);
@@ -74,8 +74,9 @@ if(!empty($_POST)) {
     if(isset($_POST['siteURL']) && validURL($_POST['siteURL'])){
         $project->setSiteURL($_POST['siteURL']);
     } else{
-        return false;
+        $isValid= false;
     }
+
 
     if(isset($_POST['trelloLink']) && validURL($_POST['trelloLink'])){
         $project->setTrelloLink($_POST['trelloLink']);
@@ -85,16 +86,16 @@ if(!empty($_POST)) {
         $project->setGitLink($_POST['gitLink']);
     }
 
+
     if(isset($_POST['name'])){
         $client->setName($_POST['name']);
     }
 
+
     if(isset($_POST['phone']) && validPhone($_POST['phone'])){
         $client->setPhone($_POST['phone']);
-    } else{
-
-        $isValid=false;
     }
+
 
     if(isset($_POST['email']) && validEmail($_POST['email'])){
         $client->setEmail($_POST['email']);

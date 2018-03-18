@@ -6,11 +6,6 @@
  * Time: 6:14 PM
  */
 
-function validProjectName($name){
-    str_replace(" ","",$name);
-    return ctype_alnum($name);
-}
-
 
 
 //validate URL
