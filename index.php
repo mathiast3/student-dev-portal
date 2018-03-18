@@ -22,5 +22,10 @@ $f3->route('GET /', function() {
     echo $view->render('views/home.html');
 });
 
+$f3->route('GET|POST /submission', function() {
+    $view = new View;
+    echo $view->render('models/submission.php');
+});
+
 
 $f3->run();
