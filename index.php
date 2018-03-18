@@ -31,7 +31,7 @@ $f3->route('GET|POST /projects', function($f3) {
     echo $template->render('views/projects.html');
 });
 
-$f3->route('GET|POST /projects/client/@projectID', function($f3, $params) {
+$f3->route('GET|POST /clients/@projectID', function($f3, $params) {
     include 'models/database.php';
     connect();
 

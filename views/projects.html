@@ -8,7 +8,9 @@
     <title>Projects</title>
 </head>
 <body>
-<h1>This page will have a table of projects</h1>
+<h1>Projects</h1>
+<p>Click on a project ID to view development History,
+    click the client company to view the client's representatives</p>
 <table style="width:100%">
     <tr>
         <th>projectID</th>
@@ -26,10 +28,10 @@
 
     <repeat group="{{ @projects }}" value="{{ @project }}">
         <tr>
-            <td>{{ @project['projectID'] }}</td>
+            <td><a href="developers/{{ @project['projectID'] }}">{{ @project['projectID'] }}</a></td>
             <td>{{ @project['title'] }}</td>
             <td>{{ @project['description'] }}</td>
-            <td>{{ @project['clientCompany'] }}</td>
+            <td><a href="clients/{{ @project['projectID'] }}">{{ @project['clientCompany'] }}</a></td>
             <td>{{ @project['clientLocation'] }}</td>
             <td>{{ @project['clientSite'] }}</td>
             <td>{{ @project['status'] }}</td>
