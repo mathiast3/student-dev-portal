@@ -9,7 +9,7 @@
 <body>
 <div class="container">
     <h1>Welcome to the Student Development Portal!</h1>
-    <form action="models/submission.php" method="post">
+    <form action="../student-dev-portal/submission" method="post">
         <div class="form-group form-control">
             <label for="projectName">Project Name:</label>
             <input class="form-control-element" type="text" id="projectName" name="projectName">
@@ -24,7 +24,13 @@
             <input type="text" name="companyLocation" id="companyLocation">
 
             <label for="companyURL">Company URL:</label>
-            <input type="text" name="companyURL" id="companyURL">
+            <input type="text" name="companyURL" id="companyURL"><br>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+
+            <label for="password">Password:</label>
+            <input type="text" name="password" id="password">
         </div>
 
         <div class="form-group form-control">

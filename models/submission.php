@@ -13,9 +13,10 @@ ini_set('display_errors', TRUE);
 
 
 require "database.php";
-require "../classes/Project.php";
+require "validation.php";
+/*require "../classes/Project.php";
 require "../classes/Client.php";
-require "../classes/Developers.php";
+require "../classes/Developers.php";*/
 
 
 
@@ -24,11 +25,18 @@ $project= new Project();
 $client = new Client();
 $developer = new Developers();
 
+
+$isValid = true;
+
 //check if the form has been submitted
 if(!empty($_POST)) {
 
-    if(isset($_POST['projectName'])){
+    if(isset($_POST['projectName']) && validProjectName($_POST['projectName'])){
         $project->setProjectName($_POST['projectName']);
+
+    } else{
+        //invailid name
+        $isValid=false;
     }
 
     if(isset($_POST['projectDescription'])){
@@ -37,14 +45,22 @@ if(!empty($_POST)) {
 
     if(isset($_POST['companyName'])){
         $project->setCompanyName($_POST['companyName']);
+
+    } else{
+        $isValid=false;
+
     }
+
 
     if(isset($_POST['companyLocation'])){
         $project->setCompanyLocation($_POST['companyLocation']);
     }
 
-    if(isset($_POST['companyURL'])){
+    if(isset($_POST['companyURL']) && validURL($_POST['companyURL'])){
         $project->setCompanyURL($_POST['companyURL']);
+    } else{
+
+        $isValid=false;
     }
 
     if(isset($_POST['username'])){
@@ -55,15 +71,17 @@ if(!empty($_POST)) {
         $project->setPassword($_POST['password']);
     }
 
-    if(isset($_POST['siteURL'])){
+    if(isset($_POST['siteURL']) && validURL($_POST['siteURL'])){
         $project->setSiteURL($_POST['siteURL']);
+    } else{
+        return false;
     }
 
-    if(isset($_POST['trelloLink'])){
+    if(isset($_POST['trelloLink']) && validURL($_POST['trelloLink'])){
         $project->setTrelloLink($_POST['trelloLink']);
     }
 
-    if(isset($_POST['gitLink'])){
+    if(isset($_POST['gitLink']) && validURL($_POST['gitLink'])){
         $project->setGitLink($_POST['gitLink']);
     }
 
@@ -71,12 +89,18 @@ if(!empty($_POST)) {
         $client->setName($_POST['name']);
     }
 
-    if(isset($_POST['phone'])){
+    if(isset($_POST['phone']) && validPhone($_POST['phone'])){
         $client->setPhone($_POST['phone']);
+    } else{
+
+        $isValid=false;
     }
 
-    if(isset($_POST['email'])){
+    if(isset($_POST['email']) && validEmail($_POST['email'])){
         $client->setEmail($_POST['email']);
+    } else{
+
+        $isValid=false;
     }
 
     if(isset($_POST['className'])){
@@ -102,15 +126,23 @@ if(!empty($_POST)) {
 
 }
 
-//insert to projects table
-insertProject($project->getProjectName(),$project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(),$project->getStatus(), $project->getTrelloLink(),$project->getSiteURL(),$project->getUsername(), $project->getPassword());
 
-//get the projectID to use as a foreign key
-$projectID=getProjectID($project->getProjectName());
+if($isValid) {
 
-//insert into the client and dev table
-insertClient($client->getName(),$client->getEmail(),$client->getPhone(),$projectID);
-insertDevelopers($developer->getName(),$developer->getInstructor(),$developer->getQuarter(),$developer->getInstructor(),$projectID);
+
+    //insert to projects table
+    insertProject($project->getProjectName(), $project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(), $project->getStatus(), $project->getTrelloLink(), $project->getSiteURL(), $project->getUsername(), $project->getPassword());
+
+    //get the projectID to use as a foreign key
+    $projectID = getProjectID($project->getProjectName());
+
+    //insert into the client and dev table
+    insertClient($client->getName(), $client->getEmail(), $client->getPhone(), $projectID);
+    insertDevelopers($developer->getName(), $developer->getInstructor(), $developer->getQuarter(), $developer->getInstructor(), $projectID);
+}else{
+    echo "unable";
+}
+
 
 
 
