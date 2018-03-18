@@ -21,6 +21,11 @@ $f3->route('GET /', function() {
     echo $view->render('views/home.html');
 });
 
+$f3->route('GET|POST /submission', function($f3) {
+    $view = new View;
+    echo $view->render('models/submission.php');
+});
+
 $f3->route('GET|POST /projects', function($f3) {
     include 'models/database.php';
     connect();
