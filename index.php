@@ -9,8 +9,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 
-require_once('vendor/autoload.php');
-
+require_once ('vendor/autoload.php');
 
 $f3 = Base::instance();
 
@@ -22,10 +21,49 @@ $f3->route('GET /', function() {
     echo $view->render('views/home.html');
 });
 
+<<<<<<< HEAD
 $f3->route('GET|POST /submission', function() {
+=======
+$f3->route('GET|POST /submission', function($f3) {
+>>>>>>> aa0656e70e8d41d6207a0128ada4c362a160ec83
     $view = new View;
     echo $view->render('models/submission.php');
 });
 
+<<<<<<< HEAD
+=======
+$f3->route('GET|POST /projects', function($f3) {
+    include 'models/database.php';
+    connect();
+    $projects = getProjects();
+    $f3->set('projects', $projects);
 
+    $template = new Template();
+    echo $template->render('views/projects.html');
+});
+
+$f3->route('GET|POST /clients/@projectID', function($f3, $params) {
+    include 'models/database.php';
+    connect();
+>>>>>>> aa0656e70e8d41d6207a0128ada4c362a160ec83
+
+    $projectID = $params['projectID'];
+    $clients = getClients($projectID);
+    $f3->set('clients', $clients);
+
+    $template = new Template();
+    echo $template->render('views/clients.html');
+});
+
+$f3->route('GET|POST /developers/@projectID', function($f3, $params) {
+    include 'models/database.php';
+    connect();
+
+    $projectID = $params['projectID'];
+    $developers = getDevelopers($projectID);
+    $f3->set('developers', $developers);
+
+    $template = new Template();
+    echo $template->render('views/developers.html');
+});
 $f3->run();
