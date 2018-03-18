@@ -41,7 +41,11 @@ create table developers (
  * Database functions
  */
 
-require "/home/mtaylorg/config.php";
+if (file_exists("/home/mtaylorg/config.php"))
+    require "/home/mtaylorg/config.php";
+else
+    require "/home/aknoxgre/config.php";
+
 
 /**
  * create a connection object
@@ -70,7 +74,7 @@ function getProjects()
     $dbh=connect();
 
     //1. Define the query
-    $sql = "SELECT * FROM projects ORDER BY last, first";
+    $sql = "SELECT * FROM projects";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
@@ -153,13 +157,13 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
 /**
  * @return array all clients and their fields
  */
-function getClients()
+function getClients($projectID)
 {
 
     $dbh=connect();
 
     //1. Define the query
-    $sql = "SELECT * FROM clients ORDER BY last, first";
+    $sql = "SELECT * FROM clients WHERE projectID =:projectID";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
@@ -207,13 +211,13 @@ function insertClient($clientName, $clientEmail, $clientPhone, $projectID)
 /**
  * @return array all developers and their fields
  */
-function getDevelopers()
+function getDevelopers($projectID)
 {
     global $dbh;
     $dbh=connect();
 
     //1. Define the query
-    $sql = "SELECT * FROM developers ORDER BY last, first";
+    $sql = "SELECT * FROM developers WHERE projectID =:projectID";
 
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
