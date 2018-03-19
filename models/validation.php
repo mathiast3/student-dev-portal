@@ -7,8 +7,10 @@
  */
 
 
-
-//validate URL
+/**
+ * @param $url the url to validate
+ * @return bool returns true if URL is valid
+ */
 function validURL($url){
     if (filter_var($url, FILTER_VALIDATE_URL) !== false)
         return true;
@@ -16,6 +18,10 @@ function validURL($url){
         return false;
 }
 
+/**
+ * @param $email the email to be validated
+ * @return bool true if email validates
+ */
 function validEmail($email){
     if (filter_var($email, FILTER_VALIDATE_EMAIL))
         return true;
@@ -23,6 +29,10 @@ function validEmail($email){
         return false;
 }
 
+/**
+ * @param $phone The phone to be validated
+ * @return bool true if phone validates
+ */
 function validPhone($phone){
 
     trim($phone);
