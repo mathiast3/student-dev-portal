@@ -20,6 +20,15 @@ $f3->route('GET /', function() {
 $f3->route('GET|POST /submission', function($f3) {
     $view = new View;
     echo $view->render('models/submission.php');
+    $f3->reroute("/submit");
+});
+
+$f3->route('GET|POST /submit', function($f3) {
+    include 'models/database.php';
+    connect();
+
+    $view = new View;
+    echo $view->render('views/submit.html');
 });
 
 $f3->route('GET|POST /projects', function($f3) {
