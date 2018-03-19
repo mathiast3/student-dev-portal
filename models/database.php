@@ -43,6 +43,13 @@ if (file_exists("/home/mtaylorg/config.php"))
     require "/home/mtaylorg/config.php";
 else
     require "/home/aknoxgre/config.php";
+
+/**
+ * Author: Ashton Knox
+ * version: 1.0
+ * file to contain database code
+ */
+
 /**
  * create a connection object
  */
