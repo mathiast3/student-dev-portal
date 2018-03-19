@@ -5,6 +5,11 @@
  * Date: 2/15/2018
  * Time: 1:50 PM
  */
+
+/**
+ * @return PDO|void
+ * connects to the database
+ */
 function connect()
 
 {
