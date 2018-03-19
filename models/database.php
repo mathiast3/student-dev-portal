@@ -79,6 +79,32 @@ function getProjects()
     //print_r($result);
     return $result;
 }
+
+/**
+ * @param $ID the id of the project to be returned
+ * @return array an array containing all fields of the project
+ */
+function getProjectByID($ID)
+{
+    $dbh=connect();
+    //1. Define the query
+    $sql = "SELECT * FROM projects WHERE projectID = :projectID";
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+    //3. Bind parameters
+    $statement->bindParam(':projectID', $projectID, PDO::PARAM_STR);
+    //4. Execute the query
+    $statement->execute();
+    //5. Get the results
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //print_r($result);
+    return $result;
+}
+
+/**
+ * @param $projectName the title of the project to be found
+ * @return mixed the ID of the project
+ */
 function getProjectID($projectName)
 {
     $dbh=connect();
@@ -106,7 +132,7 @@ function getProjectID($projectName)
  * @param $projectURL
  * @param $projectLogin
  * @param $projectPass
- * @return bool true if successfully addec
+ * @return bool true if successfully added
  */
 function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $github, $projectURL, $projectLogin, $projectPass)
 {
