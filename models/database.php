@@ -9,6 +9,7 @@
     clientSite VARCHAR(100),
     status VARCHAR(30),
     trello VARCHAR(100),
+    github VARCHAR(100),
     projectURL VARCHAR(100),
     projectLogin VARCHAR(100),
     projectPass VARCHAR(100)
