@@ -107,11 +107,11 @@ function getProjectID($projectName)
  * @param $projectPass
  * @return bool true if successfully addec
  */
-function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $projectURL, $projectLogin, $projectPass)
+function insertProject($title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $github, $projectURL, $projectLogin, $projectPass)
 {
     $dbh=connect();
     //1. Define the query
-    $sql = "INSERT INTO projects(:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
+    $sql = "INSERT INTO projects(title, description, clientCompany, clientLocation, clientSite, status, trello, github, projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
     //3. Bind parameters
@@ -122,6 +122,7 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
     $statement->bindParam(':clientSite', $clientSite, PDO::PARAM_STR);
     $statement->bindParam(':status', $status, PDO::PARAM_STR);
     $statement->bindParam(':trello', $trello, PDO::PARAM_STR);
+    $statement->bindParam(':github', $github, PDO::PARAM_STR);
     $statement->bindParam(':projectURL', $projectURL, PDO::PARAM_STR);
     $statement->bindParam(':projectLogin', $projectLogin, PDO::PARAM_STR);
     $statement->bindParam(':projectPass', $projectPass, PDO::PARAM_STR);
