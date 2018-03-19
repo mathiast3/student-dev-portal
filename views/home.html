@@ -4,39 +4,54 @@
     <meta charset="UTF-8">
     <title>Student Dev Portal</title>
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 </head>
 <body>
 <div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h3 class="navbar-brand">GRC Student-Dev-Portal</h3>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li><a href="/328/student-dev-portal/projects">Backlog</a></li>
+                <li><a href="/328/student-dev-portal">Submit a Project</a></li>
+            </ul>
+        </div>
+    </nav>
     <h1>Welcome to the Student Development Portal!</h1>
     <form action="../student-dev-portal/submission" method="post">
         <div class="form-group form-control">
             <label for="projectName">Project Name:</label>
-            <input class="form-control-element" type="text" id="projectName" name="projectName" required="required">
+            <input class="form-control" type="text" id="projectName" name="projectName" required="required">
 
             <label for="projectDescription">Project Description:</label>
-            <input type="text" name="projectDescription" id="projectDescription"><br>
+            <input class="form-control" type="text" name="projectDescription" id="projectDescription"><br><br>
+
 
             <label for="companyName">Company Name:</label>
-            <input type="text" name="companyName" id="companyName">
+            <input class="form-control" type="text" name="companyName" id="companyName" required="required">
 
             <label for="companyLocation">Company Location:</label>
-            <input type="text" name="companyLocation" id="companyLocation">
+            <input class="form-control" type="text" name="companyLocation" id="companyLocation">
 
             <label for="companyURL">Company URL:</label>
-            <input type="text" name="companyURL" id="companyURL"><br>
+            <input class="form-control" type="text" name="companyURL" id="companyURL" required="required"><br><br>
 
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username">
+            <input class="form-control" type="text" name="username" id="username">
 
             <label for="password">Password:</label>
-            <input type="text" name="password" id="password">
+            <input class="form-control" type="text" name="password" id="password">
         </div>
 
         <div class="form-group form-control">
             <h2>Project Info</h2>
             <label for="siteURL">Site URL:</label>
-            <input type="text" name="siteURL" id="siteURL">
+            <input type="text" name="siteURL" id="siteURL" required="required">
 
             <label for="trelloLink">Trello Link:</label>
             <input type="text" name="trelloLink" id="trelloLink">
@@ -51,7 +66,7 @@
             <input type="text" name="name" id="name">
 
             <label for="email">Email:</label>
-            <input type="text" name="email" id="email">
+            <input type="text" name="email" id="email" required="required">
 
             <label for="phone">Phone:</label>
             <input type="text" name="phone" id="phone">
@@ -70,11 +85,11 @@
                 <option value="winter">Winter</option>
                 <option value="spring">Spring</option>
                 <option value="summer">Summer</option>
-            </select>
+            </select><br>
 
 
-            <label for="notes">Instructor Notes</label>
-            <textarea name="notes" id="notes"></textarea>
+            <label for="notes">Instructor Notes:</label>
+            <textarea class="form-control" name="notes" id="notes"></textarea>
         </div>
 
         <br><button type="submit">Submit Project</button>
