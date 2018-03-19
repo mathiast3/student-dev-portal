@@ -14,9 +14,7 @@ ini_set('display_errors', TRUE);
 
 require "database.php";
 require "validation.php";
-/*require "../classes/Project.php";
-require "../classes/Client.php";
-require "../classes/Developers.php";*/
+
 
 
 
