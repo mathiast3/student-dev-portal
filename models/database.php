@@ -82,7 +82,7 @@ function getProjectID($projectName)
 {
     $dbh=connect();
     //1. Define the query
-    $sql = "SELECT projectID FROM projects WHERE title=:title";
+    $sql = "SELECT projectID FROM projects WHERE title = :title";
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
     //3. bind params
@@ -111,7 +111,7 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
 {
     $dbh=connect();
     //1. Define the query
-    $sql = "INSERT INTO projects(title, description, clientCompany, clientLocation, clientSite, status, trello, projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
+    $sql = "INSERT INTO projects(:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
     //3. Bind parameters
@@ -135,10 +135,11 @@ function getClients($projectID)
 {
     $dbh=connect();
     //1. Define the query
-    $sql = "SELECT * FROM clients WHERE projectID =:projectID";
+    $sql = "SELECT * FROM clients WHERE projectID = :projectID";
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
     //3. Bind parameters
+    $statement->bindParam(':projectID', $projectID, PDO::PARAM_STR);
     //4. Execute the query
     $statement->execute();
     //5. Get the results
@@ -176,10 +177,11 @@ function getDevelopers($projectID)
     global $dbh;
     $dbh=connect();
     //1. Define the query
-    $sql = "SELECT * FROM developers WHERE projectID =:projectID";
+    $sql = "SELECT * FROM developers WHERE projectID = :projectID";
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
     //3. Bind parameters
+    $statement->bindParam(':projectID', $projectID, PDO::PARAM_STR);
     //4. Execute the query
     $statement->execute();
     //5. Get the results
