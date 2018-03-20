@@ -25,13 +25,21 @@ $developer = new Developers();
 
 
 $isValid = true;
-
+$alreadyContained=false;
+$projectID=0;
 //check if the form has been submitted
 if(!empty($_POST)) {
 
 
     if(isset($_POST['projectName'])){
         $project->setProjectName($_POST['projectName']);
+        //check if the project is in the backlog
+        if(getProjectID($_POST['projectName'])!=0){
+            $projectID = getProjectID($_POST['projectName']);
+            $alreadyContained=true;
+        }
+
+
 
     } else{
         //invailid name
@@ -126,9 +134,15 @@ if(!empty($_POST)) {
 
 if($isValid) {
 
+    if($alreadyContained){
+        updateProject($projectID,$project->getProjectName(), $project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(), $project->getStatus(), $project->getTrelloLink(),$project->getGitLink(), $project->getSiteURL(), $project->getUsername(), $project->getPassword());
 
-    //insert to projects table
-    insertProject($project->getProjectName(), $project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(), $project->getStatus(), $project->getTrelloLink(),$project->getGitLink(), $project->getSiteURL(), $project->getUsername(), $project->getPassword());
+    } else{
+        //insert to projects table
+        insertProject($project->getProjectName(), $project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(), $project->getStatus(), $project->getTrelloLink(),$project->getGitLink(), $project->getSiteURL(), $project->getUsername(), $project->getPassword());
+
+    }
+
 
     //get the projectID to use as a foreign key
     $projectID = getProjectID($project->getProjectName());

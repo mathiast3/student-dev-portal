@@ -43,13 +43,6 @@ if (file_exists("/home/mtaylorg/config.php"))
     require "/home/mtaylorg/config.php";
 else
     require "/home/aknoxgre/config.php";
-
-/**
- * Author: Ashton Knox
- * version: 1.0
- * file to contain database code
- */
-
 /**
  * create a connection object
  */
@@ -160,6 +153,32 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
     $statement->bindParam(':projectURL', $projectURL, PDO::PARAM_STR);
     $statement->bindParam(':projectLogin', $projectLogin, PDO::PARAM_STR);
     $statement->bindParam(':projectPass', $projectPass, PDO::PARAM_STR);
+    //4. Execute the query
+    $statement->execute();
+}
+
+function updateProject($projectID, $title, $description, $clientCompany, $clientLocation, $clientSite, $status, $trello, $github, $projectURL, $projectLogin, $projectPass)
+{
+    $dbh=connect();
+    //1. Define the query
+    $sql = "UPDATE projects SET title = :title, description = :description, clientCompany = :clientCompany, clientLocation = :clientLocation, clientSite = :clientSite, status = :status, trello = :trello, github = :github, projectURL = :projectURL, projectLogin = :projectLogin, projectPass = :projectPass WHERE projectID = :projectID";
+
+    //2. Prepare the statement
+    $statement = $dbh->prepare($sql);
+    //3. Bind parameters
+
+    $statement->bindParam(':title', $title, PDO::PARAM_STR);
+    $statement->bindParam(':description', $description, PDO::PARAM_STR);
+    $statement->bindParam(':clientCompany', $clientCompany, PDO::PARAM_STR);
+    $statement->bindParam(':clientLocation', $clientLocation, PDO::PARAM_STR);
+    $statement->bindParam(':clientSite', $clientSite, PDO::PARAM_STR);
+    $statement->bindParam(':status', $status, PDO::PARAM_STR);
+    $statement->bindParam(':trello', $trello, PDO::PARAM_STR);
+    $statement->bindParam(':github', $github, PDO::PARAM_STR);
+    $statement->bindParam(':projectURL', $projectURL, PDO::PARAM_STR);
+    $statement->bindParam(':projectLogin', $projectLogin, PDO::PARAM_STR);
+    $statement->bindParam(':projectPass', $projectPass, PDO::PARAM_STR);
+    $statement->bindParam(':projectID', $projectID, PDO::PARAM_INT);
     //4. Execute the query
     $statement->execute();
 }
