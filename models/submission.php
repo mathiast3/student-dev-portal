@@ -130,7 +130,7 @@ if($isValid) {
 
 
     //insert to projects table
-    insertProject($project->getProjectName(), $project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(), $project->getStatus(), $project->getTrelloLink(), $project->getSiteURL(), $project->getUsername(), $project->getPassword());
+    insertProject($project->getProjectName(), $project->getProjectDescription(), $project->getCompanyName(), $project->getCompanyLocation(), $project->getCompanyURL(), $project->getStatus(), $project->getTrelloLink(), $project->getGitLink(), $project->getSiteURL(), $project->getUsername(), $project->getPassword());
 
     //get the projectID to use as a foreign key
     $projectID = getProjectID($project->getProjectName());
