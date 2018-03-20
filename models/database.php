@@ -145,7 +145,7 @@ function insertProject($title, $description, $clientCompany, $clientLocation, $c
 {
     $dbh=connect();
     //1. Define the query
-    $sql = "INSERT INTO projects(title, description, clientCompany, clientLocation, clientSite, status, trello, github, projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :projectURL, :projectLogin, :projectPass)";
+    $sql = "INSERT INTO projects(title, description, clientCompany, clientLocation, clientSite, status, trello, github, projectURL, projectLogin, projectPass) VALUES (:title, :description, :clientCompany, :clientLocation, :clientSite, :status, :trello, :github, :projectURL, :projectLogin, :projectPass)";
     //2. Prepare the statement
     $statement = $dbh->prepare($sql);
     //3. Bind parameters
