@@ -1,1 +1,1 @@
-<p>Click on a project title to view reps, click on projectID to view dev history</p>
+<p>Click on a projectID to view development history, click on company to view the clients.</p>
